@@ -39,15 +39,17 @@ def inject(file_in, file_out, start_addr, end_addr):
 	f1.close()
 	print("[+] Injection: start address: [0x%x], end address: [0x%x] "%(start_addr, end_addr ))
 	size_1 = end_addr - start_addr
-	print("[+] inject size : [%d] " %(size_1))
+        print("[+] Inject memory capacity(MAX size) : [%d] " %(size_1))
 	head_data = file_data[0:start_addr]
 	tail_data = file_data[start_addr+size_1::]
-	print ("[+] inject file open and ljust with zero")
 	f2 = open(options.inject_file,"r") 
 	inject_data = f2.read()
+        print ("[I] read injected data: len->[%d]" %len(inject_data))
+
+	print ("[+] inject file open and ljust with zero")
 	inject_data = inject_data.ljust(size_1,'\xff')
 	f2.close()
-	print("[+] inject file size : [%d] " % len(inject_data))
+	print("[+] Inject success file size: [%d] " % len(inject_data))
 	print("[+] Success inject to [%s] file. " %(file_out) )
 	f3 = open(file_out,"w") 
 	data = head_data + inject_data + tail_data
