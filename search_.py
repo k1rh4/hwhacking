@@ -1,6 +1,6 @@
 import glob 
 import os
-keywords = ["/bin/sh","popen","system","passw","token","secret", "dlopen","setreuid","upload" ]
+keywords = ["/bin/sh","popen","system","passw","token","secret", "dlopen","setreuid","upload","download","tar ","unzip"]
 for file_name in glob.glob("./*"):
     print("[+] %s " %(file_name))
     for keyword in keywords :
